@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     def index
-        
+        @posts = Post.all
     end
     
     def show
@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     end
     
     def new
+        @post = Post.new
 
     end
 
@@ -15,8 +16,11 @@ class PostsController < ApplicationController
         # render plain: params[:post].inspect
         @post = Post.new(post_param);
 
-        @post.save
-        redirect_to @post
+        if(@post.save)
+            redirect_to @post
+        else
+            render 'new'
+        end
     end
 
     private def post_param

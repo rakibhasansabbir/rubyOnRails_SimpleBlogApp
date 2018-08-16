@@ -1,1 +1,6 @@
-<h1>Welcome to rubby on rails</h1>
+<h1 class="jumbotron">Blog Posts</h1>
+<% @posts.each do |post|  %>
+    <h3><%= post.title %></h3>
+    <p><%= post.body %></p>
+<% end  %>
+
